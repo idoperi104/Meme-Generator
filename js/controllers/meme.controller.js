@@ -6,6 +6,7 @@ let gCtx
 
 function RenderEditor(imgId) {
     createMeme(imgId)
+    createLine()
     var elEditor = document.querySelector('.editor')
     elEditor.style.display = 'grid'
     renderCanvas()
@@ -38,16 +39,16 @@ function renderLines() {
 }
 
 function drawText(idx, line) {
-    const { txt, size, font, x, y, align } = line
+    const { txt, size, font, x, y, align, fillColor, strokeColor } = line
     gCtx.beginPath()
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
+    gCtx.strokeStyle = strokeColor
+    gCtx.fillStyle = fillColor
     gCtx.font = `${size}px ${font}`
-    gCtx.textBaseline = 'middle'
+    gCtx.textBaseline = 'top'
 
-    gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
+    gCtx.fillText(txt, (x + 20), y + 20 * (idx + 1)) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(txt, (x + 20), y + 20 * (idx + 1)) // Draws (strokes) a given text at the given (x, y) position.
 }
 
 // INIT CANVAS
@@ -65,9 +66,57 @@ function resizeCanvas() {
 
 // CONTROL BOX
 function onSetLineTxt(txt) {
-    console.log(txt);
     setLineTxt(txt)
     renderMeme()
 }
 
+// FUNCTIONALITY
 
+function onAddLine() {
+    createLine()
+    setSelectedLineIdx(1)
+    onSetLineColors()
+    clearElInput()
+}
+
+function onRemoveLine() {
+    console.log('delete');
+    removeLine()
+    setSelectedLineIdx(-1)
+    renderMeme()
+    // clearElInput()
+    setElInput()
+}
+
+function onMove(coords){
+    setLineCoord(coords)
+    renderMeme()
+}
+
+function onSwitchLine(){
+    setSelectedLineIdx(1)
+    setElInput()
+}
+
+function onSetLineColors(){
+    var strokeColor = document.querySelector('.stroke-color-input').value
+    var fillColor = document.querySelector('.fill-color-input').value
+    setLinesColors({fillColor, strokeColor})
+    renderMeme()
+}
+
+function onChangeFontSize(num){
+    changeFontSize(num)
+    renderMeme()
+}
+
+// HELPERS
+function clearElInput() {
+    var elInput = document.querySelector('.txt-input')
+    elInput.value = ''
+}
+
+function setElInput(){
+    var elInput = document.querySelector('.txt-input')
+    elInput.value = getCurrLineTxt()
+}

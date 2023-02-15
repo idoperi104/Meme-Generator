@@ -18,13 +18,20 @@ function createMeme(selectedImgId = 6) {
         selectedLineIdx: 0,
         lines: []
     }
-    createLine()
     saveMemeToStorage(gMeme)
     return gMeme
 }
 
-// LINE
-function createLine(txt = '', size = 40, font = 'arial', align = 'left', x = 20, y = 30) {
+function setSelectedLineIdx(num) {
+    if (num < 0 && gMeme.selectedLineIdx === 0) return
+    if (num > 0 && gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+        gMeme.selectedLineIdx = 0
+    } else gMeme.selectedLineIdx += num
+    console.log(gMeme);
+    saveMemeToStorage(gMeme)
+}
+
+function createLine(txt = '', x = 0, y = 0, fillColor = '#FFFFFF', strokeColor = '#000000', size = 40, font = 'arial', align = 'left') {
     const line = {
         txt,
         size,
@@ -32,14 +39,52 @@ function createLine(txt = '', size = 40, font = 'arial', align = 'left', x = 20,
         align,
         x,
         y,
+        strokeColor,
+        fillColor
     }
-    saveMemeToStorage(gMeme)
     gMeme.lines.push(line)
+    saveMemeToStorage(gMeme)
 }
 
-function setLineTxt(txt){
-    var {lines, selectedLineIdx} = gMeme
+function setLineCoord(coord) {
+    const { x, y } = coord
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.x += x || 0
+    currLine.y += y || 0
+    saveMemeToStorage(gMeme)
+}
+
+function setLineTxt(txt) {
+    var { lines, selectedLineIdx } = gMeme
     lines[selectedLineIdx].txt = txt
+    saveMemeToStorage(gMeme)
+}
+
+function setLinesColors(colors){
+    const {fillColor, strokeColor} = colors
+    const { lines, selectedLineIdx } = gMeme
+    lines[selectedLineIdx].fillColor = fillColor
+    lines[selectedLineIdx].strokeColor = strokeColor
+    saveMemeToStorage(gMeme)
+}
+
+function changeFontSize(count){
+    var { lines, selectedLineIdx } = gMeme
+    if (lines[selectedLineIdx].size < 5) return
+    lines[selectedLineIdx].size += count
+    saveMemeToStorage(gMeme)
+}
+
+function getCurrLineTxt() {
+    var { lines, selectedLineIdx } = gMeme
+    return lines[selectedLineIdx].txt
+}
+
+function removeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    console.log(gMeme.lines);
+    if (gMeme.lines.length === 0) createLine()
+    saveMemeToStorage(gMeme)
 }
 
 // IMG

@@ -10,6 +10,7 @@
 </head>
 
 <body onload="onInit()">
+
 <!-- <body onload="RenderEditor(5)"> -->
     <header class="main-header">
         <section class="nav flex space-between align-center">
@@ -24,22 +25,26 @@
         </section>
     </header>
 
-    <main class="main-content" >
+    <main class="main-content">
         <section class="gallery"></section>
 
         <section class="editor" style="display: none">
-            <div class="canvas-container" >
+            <div class="canvas-container">
                 <canvas class="canvas" id="my-canvas"></canvas>
             </div>
 
             <div class="control-box">
-                <input id="txt-input" class="txt-input" onkeyup="onSetLineTxt(this.value)"
-                    type="text" placeholder="type here">
-                <button class="btn-add-line">+</button>
-                <button class="btn-remove-line">x</button>
-                <button class="btn-move-up">up</button>
-                <button class="btn-move-down">down</button>
-                <button class="btn-switch-line">switch</button>
+                <input id="txt-input" class="txt-input" onkeyup="onSetLineTxt(this.value)" type="text"
+                    placeholder="type here">
+                <button class="btn-add-line" onclick="onAddLine()">add</button>
+                <button class="btn-remove-line" onclick="onRemoveLine()">delete</button>
+                <button class="btn-move-up" onclick="onMove({y:-5})">up</button>
+                <button class="btn-move-down" onclick="onMove({y:5})">down</button>
+                <button class="btn-switch-line" onclick="onSwitchLine()">switch</button>
+                <button class="btn-increase-font" onclick="onChangeFontSize(5)">A+</button>
+                <button class="btn-decrease-font" onclick="onChangeFontSize(-5)">A-</button>
+                <input type="color" class="fill-color-input" value="#FFFFFF" oninput="onSetLineColors()">
+                <input type="color" class="stroke-color-input" value="#000000" oninput="onSetLineColors()">
             </div>
         </section>
     </main>
