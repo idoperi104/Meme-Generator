@@ -13,10 +13,14 @@ function getMeme() {
 }
 
 function createMeme(selectedImgId = 6) {
-    gMeme = {
-        selectedImgId,
-        selectedLineIdx: 0,
-        lines: []
+    if (selectedImgId === 0) {
+        gMeme = readMemeFromStorage() || createMeme(1)
+    } else {
+        gMeme = {
+            selectedImgId,
+            selectedLineIdx: 0,
+            lines: []
+        }
     }
     saveMemeToStorage(gMeme)
     return gMeme
@@ -60,15 +64,15 @@ function setLineTxt(txt) {
     saveMemeToStorage(gMeme)
 }
 
-function setLinesColors(colors){
-    const {fillColor, strokeColor} = colors
+function setLinesColors(colors) {
+    const { fillColor, strokeColor } = colors
     const { lines, selectedLineIdx } = gMeme
     lines[selectedLineIdx].fillColor = fillColor
     lines[selectedLineIdx].strokeColor = strokeColor
     saveMemeToStorage(gMeme)
 }
 
-function changeFontSize(count){
+function changeFontSize(count) {
     var { lines, selectedLineIdx } = gMeme
     if (lines[selectedLineIdx].size < 5) return
     lines[selectedLineIdx].size += count
@@ -80,7 +84,7 @@ function getCurrLineTxt() {
     return lines[selectedLineIdx].txt
 }
 
-function getCurrLine(){
+function getCurrLine() {
     const { lines, selectedLineIdx } = gMeme
     return lines[selectedLineIdx]
 }

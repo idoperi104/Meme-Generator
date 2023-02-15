@@ -1,11 +1,8 @@
 'use strict'
 
-function onInit() {
-    renderGallery()
-}
-
 function renderGallery(){
     const elGallery = document.querySelector('.gallery')
+    elGallery.classList.remove('hidden')
     var imgs = getImgs()
     var strHtmls = imgs.map(img => {
         return `<img 
@@ -17,12 +14,15 @@ function renderGallery(){
 }
 
 function onImgClicked(imgId){
-    console.log(imgId);
-    hideGallery()
-    RenderEditor(imgId)
+    // hideGallery()
+    hideAllSections()
+    const elBtn = document.querySelector('.btn-editor')
+    onRenderEditor(elBtn)
+
+    renderEditor(imgId)
 }
 
 function hideGallery(){
     const elGallery = document.querySelector('.gallery')
-    elGallery.style.display = 'none'
+    elGallery.classList.add('hidden')
 }

@@ -1,0 +1,11 @@
+.btn{
+    background-color: var(--clr0);
+    text-align: center;
+    font-size: 1em;
+    border: 2px solid black;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+

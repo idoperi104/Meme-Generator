@@ -4,13 +4,14 @@ let gElCanvas
 let gCtx
 
 
-function RenderEditor(imgId) {
+function renderEditor(imgId = 0) {
     createMeme(imgId)
     createLine()
     var elEditor = document.querySelector('.editor')
-    elEditor.style.display = 'grid'
+    elEditor.classList.remove('hidden')
     renderCanvas()
     renderMeme()
+    clearElInput()
 }
 
 // MEME
@@ -54,7 +55,15 @@ function drawText(idx, line) {
 
 function renderRect(){
     const line = getCurrLine()
-    const { txt, x, y} = line
+    var { txt, size, font, x, y, align, fillColor, strokeColor } = line
+    gCtx.beginPath()
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = strokeColor
+    gCtx.fillStyle = fillColor
+    gCtx.font = `${size}px ${font}`
+    gCtx.textBaseline = 'top'
+
+    console.log(gCtx.measureText(txt));
     const textWidth = gCtx.measureText(txt).width
     const textHeight = gCtx.measureText(txt).fontBoundingBoxAscent + gCtx.measureText(txt).fontBoundingBoxDescent
 
@@ -80,6 +89,7 @@ function resizeCanvas() {
 function onSetLineTxt(txt) {
     setLineTxt(txt)
     renderMeme()
+    renderRect()
 }
 
 // FUNCTIONALITY

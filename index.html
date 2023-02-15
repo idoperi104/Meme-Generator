@@ -11,24 +11,24 @@
 
 <body onload="onInit()">
 
-<!-- <body onload="RenderEditor(2)"> -->
-    <header class="main-header">
-        <section class="nav flex space-between align-center">
-            <div class="logo">Meme</div>
-            <nav class="main-nav clean-list">
-                <ul class="main-menu clean-list flex">
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Memes</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </nav>
-        </section>
+<!-- <body onload="RenderEditor(5)"> -->
+    <header class="main-header flex space-between align-center">
+        <div class="logo" onclick="hideAllSections()">Meme Generator</div>
+        <nav class="main-nav flex">
+            <ul class="main-menu clean-list flex">
+                <li><button class="btn-nav" onclick="onRenderGallery(this)">Gallery</button></li>
+                <li><button class="btn-nav btn-editor" onclick="onRenderEditor(this)">Editor</button></li>
+                <!-- <li class="" onclick="onRenderGallery()">Gallery</li> -->
+                <li><button class="btn-nav" onclick="hideAllSections()">Memes</button></li>
+                <li><button class="btn-nav" onclick="hideAllSections()">About</button></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="main-content">
-        <section class="gallery"></section>
+        <section class="gallery hidden"></section>
 
-        <section class="editor" style="display: none">
+        <section class="editor grid hidden">
             <div class="canvas-container">
                 <canvas class="canvas" id="my-canvas"></canvas>
             </div>
@@ -60,6 +60,7 @@
     <script src="js/services/meme.service.js"></script>
     <script src="js/controllers/meme.controller.js"></script>
     <script src="js/controllers/gallery.controller.js"></script>
+    <script src="js/controllers/main.controller.js"></script>
 </body>
 
 </html>

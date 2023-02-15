@@ -12,6 +12,15 @@
     align-items: center;
 }
 
+/* grid helpers */
+.grid {
+    display: grid;
+}
+
+/* display helpers */
+.block {
+    display: block;
+}
 
 /* list helpers */
 

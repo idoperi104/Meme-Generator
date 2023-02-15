@@ -10,6 +10,12 @@
     src: url(/fonts/lato/Lato-Regular.ttf);
 }
 
+/* anton */
+@font-face {
+    font-family: anton;
+    src: url(/fonts/anton/anton.ttf);
+}
+
 /* Font Awesome */
 @font-face {
     font-family: fa;
