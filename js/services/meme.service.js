@@ -80,6 +80,11 @@ function getCurrLineTxt() {
     return lines[selectedLineIdx].txt
 }
 
+function getCurrLine(){
+    const { lines, selectedLineIdx } = gMeme
+    return lines[selectedLineIdx]
+}
+
 function removeLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     console.log(gMeme.lines);

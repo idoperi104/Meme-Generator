@@ -23,6 +23,7 @@ function renderMeme() {
     img.addEventListener('load', () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         renderLines()
+        renderRect()
     },
         false
     )
@@ -39,7 +40,7 @@ function renderLines() {
 }
 
 function drawText(idx, line) {
-    const { txt, size, font, x, y, align, fillColor, strokeColor } = line
+    var { txt, size, font, x, y, align, fillColor, strokeColor } = line
     gCtx.beginPath()
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
@@ -47,8 +48,19 @@ function drawText(idx, line) {
     gCtx.font = `${size}px ${font}`
     gCtx.textBaseline = 'top'
 
-    gCtx.fillText(txt, (x + 20), y + 20 * (idx + 1)) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(txt, (x + 20), y + 20 * (idx + 1)) // Draws (strokes) a given text at the given (x, y) position.
+    gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
+}
+
+function renderRect(){
+    const line = getCurrLine()
+    const { txt, x, y} = line
+    const textWidth = gCtx.measureText(txt).width
+    const textHeight = gCtx.measureText(txt).fontBoundingBoxAscent + gCtx.measureText(txt).fontBoundingBoxDescent
+
+    gCtx.beginPath()
+    gCtx.strokeStyle = '#000000'
+    gCtx.strokeRect(x, y, textWidth + 10, textHeight)
 }
 
 // INIT CANVAS
@@ -73,7 +85,8 @@ function onSetLineTxt(txt) {
 // FUNCTIONALITY
 
 function onAddLine() {
-    createLine()
+    var numOfLines= getMeme().lines.length
+    createLine('', 0, numOfLines * 50)
     setSelectedLineIdx(1)
     onSetLineColors()
     clearElInput()
@@ -96,6 +109,7 @@ function onMove(coords){
 function onSwitchLine(){
     setSelectedLineIdx(1)
     setElInput()
+    renderMeme()
 }
 
 function onSetLineColors(){
