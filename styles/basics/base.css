@@ -2,3 +2,7 @@
 body.rtl {
     direction: rtl;
 }
+
+img {
+    object-fit: cover;
+}

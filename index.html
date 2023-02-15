@@ -9,17 +9,40 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body>
-    <section class="gallery"></section>
-    
-    <section class="editor"></section>
+<body onload="onInit()">
+<!-- <body onload="RenderEditor(5)"> -->
+    <header class="main-header">
+        <section class="nav flex space-between align-center">
+            <div class="logo">Meme</div>
+            <nav class="main-nav clean-list">
+                <ul class="main-menu clean-list flex">
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
 
+    <main class="main-content" >
+        <section class="gallery"></section>
 
+        <section class="editor" style="display: none">
+            <div class="canvas-container" >
+                <canvas class="canvas" id="my-canvas"></canvas>
+            </div>
 
-
-
-
-
+            <div class="control-box">
+                <input id="txt-input" class="txt-input" onkeyup="onSetLineTxt(this.value)"
+                    type="text" placeholder="type here">
+                <button class="btn-add-line">+</button>
+                <button class="btn-remove-line">x</button>
+                <button class="btn-move-up">up</button>
+                <button class="btn-move-down">down</button>
+                <button class="btn-switch-line">switch</button>
+            </div>
+        </section>
+    </main>
 
 
 
@@ -29,7 +52,9 @@
     <script src="js/services/UrlParams.service.js"></script>
     <script src="js/services/util.service.js"></script>
     <script src="js/services/i18n.service.js"></script>
-    <script src="js/controller.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/controllers/meme.controller.js"></script>
+    <script src="js/controllers/gallery.controller.js"></script>
 </body>
 
 </html>
