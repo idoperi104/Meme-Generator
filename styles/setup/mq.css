@@ -40,5 +40,8 @@
     .btn-nav:hover {
         font-size:1rem;
     }
+    .img-gallery {
+        width: 100px;
+    }
 
 }

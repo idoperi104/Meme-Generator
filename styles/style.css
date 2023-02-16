@@ -18,6 +18,7 @@
 @import 'components/canvas.css';
 @import 'components/img-gallery.css';
 @import 'components/btn.css';
+@import 'components/gallery.css';
 
 /* MEDIA QUERIS */
 @import 'setup/mq.css';
