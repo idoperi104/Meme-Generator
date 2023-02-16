@@ -2,15 +2,11 @@
 
 @media (max-width: 740px) {
     .main-layout {
-        height: 100vh;
-        grid-template-rows: 60px 1fr 60px;
+        grid-template-rows: 60px calc(100vh - 120px) 60px;
         grid-template-columns: 0 1fr 0;
     }
     .logo {
-        /* color: var(--clr2);
-        font-family: anton, monospace; */
         font-size: 1.2rem;
-        /* text-transform: lowercase; */
         margin-inline-start: .5rem;
         width: 80px;
     }
@@ -23,13 +19,16 @@
     }
     .editor {
         grid-template-columns: none;
-        grid-template-rows: 1fr 1fr;
         height: 100%;
-        background-color: var(--clr2);
+        grid-template-rows: calc((100vh - 120px) * 5.5 / 10) calc((100vh - 120px) * 4.5 / 10);
+        background-color: var(--clr1);
+        border: 0;
     }
     .editor > * {
         margin: 0;
         height: 100%;
+        background-color: var(--clr1);
+        border: 0;
     }
     .main-menu > * {
         width: 5rem;
@@ -42,6 +41,10 @@
     }
     .img-gallery {
         width: 100px;
+    }
+
+    .control-box {
+        gap: 0.5em;
     }
 
 }

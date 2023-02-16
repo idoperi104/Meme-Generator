@@ -1,11 +1,12 @@
 'use strict'
 
 function onInit(){
-    // renderGallery()
+    onRenderGallery()
 }
 
 function onRenderGallery(elBtn){
     hideAllSections()
+    elBtn = document.querySelector('.btn-gallery')
     elBtn.classList.add('btn-nav-hover')
     renderGallery()
 }

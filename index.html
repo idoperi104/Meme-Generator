@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<!-- <body class="main-layout" onload="onInit()"> -->
+<body class="main-layout" onload="onInit()">
 
-<body class="main-layout" onload="renderEditor()">
+<!-- <body class="main-layout" onload="renderEditor()"> -->
     <header class="full-grid main-header flex space-between align-center">
-        <div class="logo" onclick="hideAllSections()">Meme Generator</div>
+        <div class="logo" onclick="onInit()">Meme Generator</div>
         <nav class="main-nav flex">
             <ul class="main-menu clean-list flex">
-                <li><button class="btn-nav" onclick="onRenderGallery(this)">Gallery</button></li>
+                <li><button class="btn-nav btn-gallery" onclick="onRenderGallery(this)">Gallery</button></li>
                 <li><button class="btn-nav btn-editor" onclick="onRenderEditor(this)">Editor</button></li>
                 <li><button class="btn-nav" onclick="hideAllSections()">Memes</button></li>
                 <!-- <li><button class="btn-nav" onclick="hideAllSections()">About</button></li> -->
