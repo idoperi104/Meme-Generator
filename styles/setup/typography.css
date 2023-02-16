@@ -50,7 +50,7 @@
 
 @font-face {
     font-family: fa-solid;
-    src: url("/fonts/fa/fa-solid-900.ttf") format('truetype');
+    src: url("Meme-Generator/fonts/fa/fa-solid-900.ttf");
     /* src: local('fonts/fa/fa-solid-900.ttf'); */
 }
 
