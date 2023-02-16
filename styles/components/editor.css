@@ -5,18 +5,19 @@
 
 .editor {
     /* display: grid; */
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 6fr 4fr;
 
-    height: 500px;
+    height: 600px;
     width: 100%;
-    background-color: var(--clr-1);
-    border: 5px solid var(--clr2);
+    /* background-color: var(--clr-1); */
+    /* border: 5px solid var(--clr2); */
 
     margin: auto 0 auto;
 }
 
 .editor > * {
     height: 95%;
-    border: 3px solid var(--clr2);
+    /* border: 3px solid var(--clr2); */
+    box-shadow: -5px 4px 5px 0px;
     margin: 10px;
 }

@@ -4,6 +4,7 @@ let gElCanvas
 let gCtx
 let gStartPos
 let gIsMouseClickDown = false
+let gIsSowRect = true
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
@@ -45,6 +46,7 @@ function renderLines() {
 
 function drawText(idx, line) {
     var { txt, size, font, x, y, align, fillColor, strokeColor } = line
+
     gCtx.beginPath()
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
@@ -54,6 +56,7 @@ function drawText(idx, line) {
 
     gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
+
 }
 
 function renderRect() {
@@ -71,7 +74,8 @@ function renderRect() {
 
     gCtx.beginPath()
     gCtx.strokeStyle = '#000000'
-    gCtx.strokeRect(x, y, textWidth + 10, textHeight)
+    if (gIsSowRect) gCtx.strokeRect(x, y, textWidth + 10, textHeight)
+
 
     //update rect model
     createRect(x, y, textWidth + 10, textHeight, gIsMouseClickDown)
@@ -143,6 +147,51 @@ function onChangeFontSize(num) {
     renderMeme()
 }
 
+function onAlingLine(aling) {
+    var canvasWidth = gElCanvas.width
+    var rectX = getRect().x
+    var rectWidth = getRect().width
+
+    console.log(canvasWidth, rectX, rectWidth);
+    switch (aling) {
+        case 'left':
+            onMoveLine({ x: -rectX })
+            break
+        case 'center':
+            var diss = (canvasWidth - rectWidth) / 2 - rectX
+            onMoveLine({ x: diss })
+            break
+        case 'right':
+            onMoveLine({ x: canvasWidth - rectX - rectWidth })
+            break
+    }
+    renderMeme()
+}
+
+function onSetFont(font) {
+    console.log(font);
+    setFont(font)
+    renderMeme()
+}
+
+function onShareImg(){
+    gIsSowRect = false
+    renderMeme()
+    setTimeout(() => {
+        onUploadImg()
+    }, 1000);
+}
+
+function downloadImg(elLink) {
+    gIsSowRect = false
+    renderMeme()
+    setTimeout(() => {
+        const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+        elLink.href = imgContent
+    }, 1000);
+
+}
+
 // HELPERS
 function clearElInput() {
     var elInput = document.querySelector('.txt-input')
@@ -204,7 +253,7 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     if (!isRectClicked(pos)) return
 
-    
+
     setRectDrag(true)
     // //Save the pos we start from
     gStartPos = pos
@@ -235,3 +284,4 @@ function onUp() {
     setRectDrag(false)
     document.body.style.cursor = 'default'
 }
+

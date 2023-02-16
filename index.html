@@ -35,35 +35,35 @@
             <div class="control-box">
                 <input id="txt-input" class="txt-input full-grid" onkeyup="onSetLineTxt(this.value)" type="text"
                     placeholder="type here">
-                <button class="btn-control btn-add-line" onclick="onAddLine()">add</button>
-                <button class="btn-control btn-remove-line" onclick="onRemoveLine()">delete</button>
-                <button class="btn-control btn-move-up" onclick="onMoveLine({y:-5})">up</button>
-                <button class="btn-control btn-move-down" onclick="onMoveLine({y:5})">down</button>
-                <button class="btn-control btn-switch-line" onclick="onSwitchLine()">switch</button>
+                <button class="btn-control btn-add-line fa-solid plus" onclick="onAddLine()"></button>
+                <button class="btn-control btn-remove-line fa-solid trash" onclick="onRemoveLine()"></button>
+                <button class="btn-control btn-move-up fa-solid up" onclick="onMoveLine({y:-5})"></button>
+                <button class="btn-control btn-move-down fa-solid down" onclick="onMoveLine({y:5})"></button>
+                <button class="btn-control btn-switch-line fa-solid switch" onclick="onSwitchLine()"></button>
 
                 <div class="style-line-container full-grid">
                     <button class="btn-increase-font" onclick="onChangeFontSize(5)">A+</button>
                     <button class="btn-decrease-font" onclick="onChangeFontSize(-5)">A-</button>
-                    <button class="btn-aling-font not-working" onclick="">left</button>
-                    <button class="btn-aling-font not-working" onclick="">center</button>
-                    <button class="btn-aling-font not-working" onclick="">right</button>
-                    <select class="font-select not-working" name="font" id="font">
+                    <button class="btn-aling-font fa-solid aling-left" onclick="onAlingLine('left')"></button>
+                    <button class="btn-aling-font fa-solid aling-center" onclick="onAlingLine('center')"></button>
+                    <button class="btn-aling-font fa-solid aling-right" onclick="onAlingLine('right')"></button>
+                    <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
                         <option value="arial">Arial</option>
-                        <option value="arial">lato</option>
-                        <option value="arial">eurifrance</option>
-                        <option value="arial">anton</option>
+                        <option value="lato">Lato</option>
+                        <option value="eurofurence">Eurofurence</option>
+                        <option value="anton">Anton</option>
                     </select>
-                    <input type="color" class="fill-color-input" value="#FFFFFF" oninput="onSetLineColors()">
-                    <input type="color" class="stroke-color-input" value="#000000" oninput="onSetLineColors()">
+                    <input type="color" class="fill-color-input fa-solid fill" value="#FFFFFF" oninput="onSetLineColors()">
+                    <input type="color" class="stroke-color-input fa-solid stroke" value="#000000" oninput="onSetLineColors()">
                 </div>
 
                 <div class="sticker-container full-grid">
                     stickers go here
                 </div>
 
-                <button class="btn-share not-working">Share</button>
-                <button class="btn-save not-working">Save</button>
-                <button class="btn-download not-working">Download</button>
+                <button class="btn-share fa-brands facebook" onclick="onShareImg()"></button>
+                <button class="btn-save fa-solid disk" ></button>
+                <a href="#" class="btn-download fa-solid download" onclick="downloadImg(this)" download="my-img.jpg"></a>
             </div>
         </section>
     </main>
@@ -74,6 +74,7 @@
 
     <!-- script sources -->
     <script src="js/lib/hammer.js"></script>
+    <script src="js/sharing-on-facebook.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/UrlParams.service.js"></script>
     <script src="js/services/util.service.js"></script>

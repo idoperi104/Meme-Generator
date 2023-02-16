@@ -17,6 +17,7 @@
 
 .control-box .btn-download{
     grid-column: 4 / 6;
+    background-color: var(--clr-1);
 }
 
 .style-line-container{
@@ -28,6 +29,11 @@
     grid-template-rows: repeat(2, 1fr);
     gap: .5em;
     padding: .5em;
+}
+
+.style-line-container > *{
+    height: 100%;
+    width: 100%;
 }
 
 .sticker-container {
@@ -47,4 +53,11 @@
 
 .control-box button {
     border-radius: 8px;
+}
+
+.fill-color-input{
+    position: relative;
+}
+.stroke-color-input{
+    position: relative;
 }

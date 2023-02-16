@@ -1,0 +1,19 @@
+/* .gallery {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+} */
+
+
+.img-gallery {
+    width: 200px;
+    margin: .5em;
+    padding: 0;
+    border: 0;
+    transition: 0.1s;
+}
+
+.img-gallery:hover {
+    border: 10px solid var(--clr0);
+}

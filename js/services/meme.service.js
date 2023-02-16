@@ -35,7 +35,7 @@ function setSelectedLineIdx(num) {
     saveMemeToStorage(gMeme)
 }
 
-function createLine(txt = '', x = 0, y = 0, fillColor = '#FFFFFF', strokeColor = '#000000', size = 40, font = 'arial', align = 'left') {
+function createLine(txt = '', x = 40, y = 40, fillColor = '#FFFFFF', strokeColor = '#000000', size = 40, font = 'arial', align = 'center') {
     const line = {
         txt,
         size,
@@ -93,6 +93,11 @@ function removeLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     console.log(gMeme.lines);
     if (gMeme.lines.length === 0) createLine()
+    saveMemeToStorage(gMeme)
+}
+
+function setFont(font){
+    getCurrLine().font = font
     saveMemeToStorage(gMeme)
 }
 
