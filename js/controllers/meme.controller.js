@@ -2,7 +2,10 @@
 
 let gElCanvas
 let gCtx
+let gStartPos
+let gIsMouseClickDown = false
 
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function renderEditor(imgId = 0) {
     createMeme(imgId)
@@ -10,8 +13,8 @@ function renderEditor(imgId = 0) {
     var elEditor = document.querySelector('.editor')
     elEditor.classList.remove('hidden')
     renderCanvas()
-    renderMeme()
     clearElInput()
+
 }
 
 // MEME
@@ -53,7 +56,7 @@ function drawText(idx, line) {
     gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
 }
 
-function renderRect(){
+function renderRect() {
     const line = getCurrLine()
     var { txt, size, font, x, y, align, fillColor, strokeColor } = line
     gCtx.beginPath()
@@ -63,20 +66,24 @@ function renderRect(){
     gCtx.font = `${size}px ${font}`
     gCtx.textBaseline = 'top'
 
-    console.log(gCtx.measureText(txt));
     const textWidth = gCtx.measureText(txt).width
     const textHeight = gCtx.measureText(txt).fontBoundingBoxAscent + gCtx.measureText(txt).fontBoundingBoxDescent
 
     gCtx.beginPath()
     gCtx.strokeStyle = '#000000'
     gCtx.strokeRect(x, y, textWidth + 10, textHeight)
+
+    //update rect model
+    createRect(x, y, textWidth + 10, textHeight, gIsMouseClickDown)
 }
 
 // INIT CANVAS
 function renderCanvas() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+    renderMeme()
     resizeCanvas()
+    addListeners()
 }
 
 function resizeCanvas() {
@@ -95,7 +102,7 @@ function onSetLineTxt(txt) {
 // FUNCTIONALITY
 
 function onAddLine() {
-    var numOfLines= getMeme().lines.length
+    var numOfLines = getMeme().lines.length
     createLine('', 0, numOfLines * 50)
     setSelectedLineIdx(1)
     onSetLineColors()
@@ -111,25 +118,25 @@ function onRemoveLine() {
     setElInput()
 }
 
-function onMove(coords){
+function onMoveLine(coords) {
     setLineCoord(coords)
     renderMeme()
 }
 
-function onSwitchLine(){
+function onSwitchLine() {
     setSelectedLineIdx(1)
     setElInput()
     renderMeme()
 }
 
-function onSetLineColors(){
+function onSetLineColors() {
     var strokeColor = document.querySelector('.stroke-color-input').value
     var fillColor = document.querySelector('.fill-color-input').value
-    setLinesColors({fillColor, strokeColor})
+    setLinesColors({ fillColor, strokeColor })
     renderMeme()
 }
 
-function onChangeFontSize(num){
+function onChangeFontSize(num) {
     changeFontSize(num)
     renderMeme()
 }
@@ -140,7 +147,89 @@ function clearElInput() {
     elInput.value = ''
 }
 
-function setElInput(){
+function setElInput() {
     var elInput = document.querySelector('.txt-input')
     elInput.value = getCurrLineTxt()
+}
+
+
+// LISTENERS
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+    //Listen for resize ev
+    // window.addEventListener('resize', () => {
+    //     renderEditor()
+    // })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function getEvPos(ev) {
+    // Gets the offset pos , the default pos
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+    // Check if its a touch ev
+    if (TOUCH_EVS.includes(ev.type)) {
+        //soo we will not trigger the mouse ev
+        ev.preventDefault()
+        //Gets the first touch point
+        ev = ev.changedTouches[0]
+        //Calc the right pos according to the touch screen
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
+}
+
+function onDown(ev) {
+    // console.log('Down')
+    // Get the ev pos from mouse or touch
+    const pos = getEvPos(ev)
+    if (!isRectClicked(pos)) return
+
+    
+    setRectDrag(true)
+    // //Save the pos we start from
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+}
+
+function onMove(ev) {
+    const { isDrag } = getRect()
+    if (!isDrag) return
+
+    gIsMouseClickDown = true
+
+    const pos = getEvPos(ev)
+    // Calc the delta , the diff we moved
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+
+    gStartPos = pos
+
+    onMoveLine({ x: dx, y: dy })
+
+    renderMeme()
+}
+
+function onUp() {
+    // console.log('Up')
+    gIsMouseClickDown = false
+    setRectDrag(false)
+    document.body.style.cursor = 'default'
 }
