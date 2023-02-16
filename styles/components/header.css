@@ -1,5 +1,5 @@
 .main-header {
-    height: 70px;
+    height: 100%;
     background-color: var(--clr0);
     margin-block-end: 50px;
 }

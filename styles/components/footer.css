@@ -1,5 +1,4 @@
 .main-footer {
-    height: 140px;
+    height: 100%;
     background-color: var(--clr0);
-    margin-block-end: 50px;
 }

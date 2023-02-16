@@ -8,7 +8,7 @@
     grid-template-columns: 1fr 1fr;
 
     height: 500px;
-    width: 1000px;
+    width: 100%;
     background-color: var(--clr-1);
     border: 5px solid var(--clr2);
 

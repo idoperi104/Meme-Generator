@@ -1,5 +1,44 @@
 /* mobile-menu */
 
 @media (max-width: 740px) {
-    
+    .main-layout {
+        height: 100vh;
+        grid-template-rows: 60px 1fr 60px;
+        grid-template-columns: 0 1fr 0;
+    }
+    .logo {
+        /* color: var(--clr2);
+        font-family: anton, monospace; */
+        font-size: 1.2rem;
+        /* text-transform: lowercase; */
+        margin-inline-start: .5rem;
+        width: 80px;
+    }
+    .main-header {
+        height: 100%;
+        margin-block-end: 0;
+    }
+    .main-footer {
+        height: 70px;
+    }
+    .editor {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        height: 100%;
+        background-color: var(--clr2);
+    }
+    .editor > * {
+        margin: 0;
+        height: 100%;
+    }
+    .main-menu > * {
+        width: 5rem;
+    }
+    .btn-nav-hover {
+        font-size:1rem;
+    }
+    .btn-nav:hover {
+        font-size:1rem;
+    }
+
 }
