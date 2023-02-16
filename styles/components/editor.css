@@ -6,19 +6,17 @@
 .editor {
     /* display: grid; */
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-
 
     height: 500px;
     width: 1000px;
-    background-color: aliceblue;
-    border: 2px solid black;
-    border-radius: 10px;
+    background-color: var(--clr-1);
+    border: 5px solid var(--clr2);
+
+    margin: auto 0 auto;
 }
 
 .editor > * {
-    height: 94%;
-    border: 2px solid black;
-    border-radius: 10px;
+    height: 95%;
+    border: 3px solid var(--clr2);
     margin: 10px;
 }

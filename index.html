@@ -9,23 +9,22 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body onload="onInit()">
+<!-- <body onload="onInit()"> -->
 
-<!-- <body onload="RenderEditor(5)"> -->
-    <header class="main-header flex space-between align-center">
+<body class="main-layout" onload="renderEditor(5)">
+    <header class="full-grid main-header flex space-between align-center">
         <div class="logo" onclick="hideAllSections()">Meme Generator</div>
         <nav class="main-nav flex">
             <ul class="main-menu clean-list flex">
                 <li><button class="btn-nav" onclick="onRenderGallery(this)">Gallery</button></li>
                 <li><button class="btn-nav btn-editor" onclick="onRenderEditor(this)">Editor</button></li>
-                <!-- <li class="" onclick="onRenderGallery()">Gallery</li> -->
                 <li><button class="btn-nav" onclick="hideAllSections()">Memes</button></li>
                 <li><button class="btn-nav" onclick="hideAllSections()">About</button></li>
             </ul>
         </nav>
     </header>
 
-    <main class="main-content">
+    <main class="main-content flex space-between align-center">
         <section class="gallery hidden"></section>
 
         <section class="editor grid hidden">
@@ -34,20 +33,42 @@
             </div>
 
             <div class="control-box">
-                <input id="txt-input" class="txt-input" onkeyup="onSetLineTxt(this.value)" type="text"
+                <input id="txt-input" class="txt-input full-grid" onkeyup="onSetLineTxt(this.value)" type="text"
                     placeholder="type here">
-                <button class="btn-add-line" onclick="onAddLine()">add</button>
-                <button class="btn-remove-line" onclick="onRemoveLine()">delete</button>
-                <button class="btn-move-up" onclick="onMove({y:-5})">up</button>
-                <button class="btn-move-down" onclick="onMove({y:5})">down</button>
-                <button class="btn-switch-line" onclick="onSwitchLine()">switch</button>
-                <button class="btn-increase-font" onclick="onChangeFontSize(5)">A+</button>
-                <button class="btn-decrease-font" onclick="onChangeFontSize(-5)">A-</button>
-                <input type="color" class="fill-color-input" value="#FFFFFF" oninput="onSetLineColors()">
-                <input type="color" class="stroke-color-input" value="#000000" oninput="onSetLineColors()">
+                <button class="btn-control btn-add-line" onclick="onAddLine()">add</button>
+                <button class="btn-control btn-remove-line" onclick="onRemoveLine()">delete</button>
+                <button class="btn-control btn-move-up" onclick="onMove({y:-5})">up</button>
+                <button class="btn-control btn-move-down" onclick="onMove({y:5})">down</button>
+                <button class="btn-control btn-switch-line" onclick="onSwitchLine()">switch</button>
+
+                <div class="style-line-container full-grid">
+                    <button class="btn-increase-font" onclick="onChangeFontSize(5)">A+</button>
+                    <button class="btn-decrease-font" onclick="onChangeFontSize(-5)">A-</button>
+                    <button class="btn-aling-font not-working" onclick="">left</button>
+                    <button class="btn-aling-font not-working" onclick="">center</button>
+                    <button class="btn-aling-font not-working" onclick="">right</button>
+                    <select class="font-select not-working" name="font" id="font">
+                        <option value="arial">Arial</option>
+                        <option value="arial">lato</option>
+                        <option value="arial">eurifrance</option>
+                        <option value="arial">anton</option>
+                    </select>
+                    <input type="color" class="fill-color-input" value="#FFFFFF" oninput="onSetLineColors()">
+                    <input type="color" class="stroke-color-input" value="#000000" oninput="onSetLineColors()">
+                </div>
+
+                <div class="sticker-container full-grid">
+                    stickers go here
+                </div>
+
+                <button class="btn-share not-working">Share</button>
+                <button class="btn-save not-working">Save</button>
+                <button class="btn-download not-working">Download</button>
             </div>
         </section>
     </main>
+
+    <footer class="full-grid main-footer flex space-between align-center">Footer</footer>
 
 
 

@@ -81,8 +81,8 @@ function renderCanvas() {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
+    gElCanvas.width = elContainer.offsetWidth - 3
+    gElCanvas.height = elContainer.offsetHeight - 5
 }
 
 // CONTROL BOX

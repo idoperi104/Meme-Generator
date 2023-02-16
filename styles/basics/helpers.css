@@ -17,6 +17,9 @@
     display: grid;
 }
 
+.full-grid{
+    grid-column: 1 / -1;
+}
 /* display helpers */
 .block {
     display: block;
@@ -32,4 +35,9 @@
 
 .hidden {
     display: none;
+}
+
+
+.not-working{
+    background-color: red;
 }

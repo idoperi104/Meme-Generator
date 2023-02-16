@@ -16,7 +16,7 @@
 
 .btn-nav{
     text-align: center;
-    font-size: 1rem;
+    font-size: 1em;
     border: 0;
     background-color: var(--cl1);
     height: 100%;
@@ -29,11 +29,11 @@
 .btn-nav:hover{
     color: var(--clr1);
     font-size: 1.3rem;
-    box-shadow: inset 0 -6px 0 var(--clr1);
+    box-shadow: inset 0 -6px 0 var(--clr2);
 }
 
 .btn-nav-hover{
     color: var(--clr1);
     font-size: 1.3rem;
-    box-shadow: inset 0 -6px 0 var(--clr1);
+    box-shadow: inset 0 -6px 0 var(--clr2);
 }
