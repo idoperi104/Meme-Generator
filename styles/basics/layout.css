@@ -1,12 +1,12 @@
 .main-layout{
     display: grid;
-    grid-template-rows: 70px 1fr 140px;
-    grid-template-columns: 1fr 1000px 1fr;
+    grid-template-rows: 70px 1fr;
+    /* grid-template-columns: 1fr 1000px 1fr; */
     
 }
 
-.main-layout > * {
+/* .main-layout > * {
     grid-column: 2;
-}
+} */
 
 

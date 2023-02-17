@@ -14,19 +14,26 @@ function renderEditor(imgId = 0) {
     var elEditor = document.querySelector('.editor')
     elEditor.classList.remove('hidden')
     renderCanvas()
+    addListeners()
     clearElInput()
 
 }
 
 // MEME
 function renderMeme() {
-    var meme = getMeme()
+    const meme = getMeme()
 
-    var imgUrl = getImgById(meme.selectedImgId).url
-    const img = new Image()
+    const imgUrl = getImgById(meme.selectedImgId).url
+    let img = new Image()
     // when img loads:
     img.addEventListener('load', () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        let scaleFactor = Math.max(gElCanvas.width / img.width, gElCanvas.height / img.height);
+        let newWidth = img.width * scaleFactor;
+        let newHeight = img.height * scaleFactor;
+        let x = (gElCanvas.width / 2) - (newWidth / 2);
+        let y = (gElCanvas.height / 2) - (newHeight / 2);
+        gCtx.drawImage(img, x, y, newWidth, newHeight);
+
         renderLines()
         renderRect()
     },
@@ -85,9 +92,9 @@ function renderRect() {
 function renderCanvas() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    renderMeme()
     resizeCanvas()
-    addListeners()
+    renderMeme()
+    // addListeners()
 }
 
 function resizeCanvas() {
@@ -174,7 +181,7 @@ function onSetFont(font) {
     renderMeme()
 }
 
-function onShareImg(){
+function onShareImg() {
     gIsSowRect = false
     renderMeme()
     setTimeout(() => {
@@ -209,9 +216,10 @@ function addListeners() {
     addMouseListeners()
     addTouchListeners()
     //Listen for resize ev
-    // window.addEventListener('resize', () => {
-    //     renderEditor()
-    // })
+    window.addEventListener('resize', () => {
+        renderCanvas()
+        // renderEditor()
+    })
 }
 
 function addMouseListeners() {

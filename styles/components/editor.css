@@ -9,6 +9,8 @@
 
     height: 600px;
     width: 100%;
+
+    gap: 10px;
     /* background-color: var(--clr-1); */
     /* border: 5px solid var(--clr2); */
 
@@ -16,8 +18,18 @@
 }
 
 .editor > * {
-    height: 95%;
     /* border: 3px solid var(--clr2); */
     box-shadow: -5px 4px 5px 0px;
-    margin: 10px;
+    max-height: 600px;
+    /* margin: 10px; */
 }
+.editor > *:first-child {
+    max-width: 60vw;
+}
+.editor > *:nth-child(2) {
+    max-width: 40vw;
+}
+
+/* .canvas-container{
+    max-height: 600px;
+} */

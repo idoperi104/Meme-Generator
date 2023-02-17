@@ -1,26 +1,25 @@
 /* Eurofurence */
 @font-face {
     font-family: eurofurence;
-    src: url(/fonts/eurofurence/eurof55.ttf);
-    
+    src: url(/fonts/eurofurence/eurof55.ttf)
 }
 
 /* Lato */
 @font-face {
     font-family: lato;
-    src: url('/fonts/lato/Lato-Regular.ttf');
+    src: url(/fonts/lato/Lato-Regular.ttf)
 }
 
 /* anton */
 @font-face {
     font-family: anton;
-    src: url('/fonts/anton/anton.ttf');
+    src: url(/fonts/anton/anton.ttf)
 }
 
 /* Font Awesome */
 @font-face {
     font-family: fa-brands;
-    src: url('/fonts/fa/fa-brands-400.ttf');
+    src: url(/fonts/fa/fa-brands-400.ttf)
 }
 
 .fa-brands::before {
@@ -37,7 +36,7 @@
 
 @font-face {
     font-family: fa-regular;
-    src: url('/fonts/fa/fa-regular-400.ttf');
+    src: url(/fonts/fa/fa-regular-400.ttf)
 }
 
 .fa-regular::before {
@@ -50,8 +49,7 @@
 
 @font-face {
     font-family: fa-solid;
-    src: url('/fonts/fa/fa-solid-900.ttf');
-    /* src: local('fonts/fa/fa-solid-900.ttf'); */
+    src: url(/fonts/fa/fa-solid-900.ttf)
 }
 
 .fa-solid::before {
