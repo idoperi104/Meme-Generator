@@ -34,6 +34,14 @@ function renderMeme() {
         let y = (gElCanvas.height / 2) - (newHeight / 2);
         gCtx.drawImage(img, x, y, newWidth, newHeight);
 
+        // let scale_factor = Math.min(gElCanvas.width / img.width, gElCanvas.height / img.height);
+        // let newWidth = img.width * scale_factor;
+        // let newHeight = img.height * scale_factor;
+        // let x = (gElCanvas.width / 2) - (newWidth / 2);
+        // let y = (gElCanvas.height / 2) - (newHeight / 2);
+        // gCtx.drawImage(img, x, y, newWidth, newHeight);
+
+        // gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
         renderLines()
         renderRect()
     },

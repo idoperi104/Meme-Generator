@@ -1,6 +1,6 @@
 /* mobile-menu */
 
-@media (max-width: 780px) {
+@media (max-width: 740px) {
     .main-layout {
         grid-template-rows: 50px 1fr;
     }
@@ -13,12 +13,14 @@
         height: 100%;
         margin-block-end: 0;
         font-size: .8rem;
+        width: 100vw;
     }
     .main-footer {
         height: 70px;
     }
     .editor {
         grid-template-columns: none;
+        /* grid-template-rows: ; */
         height: 100%;
         background-color: var(--clr1);
         border: 0;
@@ -28,12 +30,12 @@
         /* width: 100vw; */
     }
     .editor > *:first-child {
-        max-width: 100vh;
+        max-width: 100vw;
         height: 50vh;
         height: calc(var(--vh, 1vh) * 50);
     }
     .editor > *:nth-child(2) {
-        max-width: 100vh;
+        max-width: 100vw;
         height: 40vh;
         height: calc(var(--vh, 1vh) * 40);
     }
@@ -51,4 +53,45 @@
         gap: 0.5em;
     }
 
+}
+
+@media (min-width: 740px) {
+    .editor {
+        width: 100%;
+        height: 600px;
+    }
+    .editor > *:nth-child(2) {
+        max-width: 100%;
+        height: 600px;
+    }
+    .editor > *:first-child{
+        height: 600px;
+    }
+    
+}
+
+@media (min-width: 1000px) {
+    .editor {
+        grid-template-columns: 600px 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .editor {
+        grid-template-columns: 6fr 4fr;
+        height: 720px;
+        width: 1200px;
+    }
+    .editor > * {
+        height: 720px;
+    }
+    .editor > *:nth-child(2) {
+        height: 720px;
+        max-width: 40vw;
+    }
+    .editor > *:first-child{
+        height: 720px;
+    }
+    
+    
 }
