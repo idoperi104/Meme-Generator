@@ -1,13 +1,11 @@
 body {
     width: 100vw;
     height: 100vh;
-    /* Use vh as a fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
     padding: 0;
     margin: 0;
     background-color: var(--clr1);
 }
-
 
 body.rtl {
     direction: rtl;
@@ -18,7 +16,6 @@ img {
     object-fit: cover;
 }
 
-
 button:hover {
     cursor: pointer;
 }
@@ -27,4 +24,5 @@ a {
     position: relative;
     color: var(--clr2);
     text-decoration: none;
+    border-radius: 8px;
 }

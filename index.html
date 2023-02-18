@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/9390029f75.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="main-layout" onload="onInit()">
-
-<!-- <body class="main-layout" onload="renderEditor()"> -->
     <header class="main-header flex space-between align-center">
         <div class="logo" onclick="onInit()">Meme Generator</div>
         <nav class="main-nav flex">
@@ -19,13 +18,12 @@
                 <li><button class="btn-nav btn-gallery" onclick="onRenderGallery(this)">Gallery</button></li>
                 <li><button class="btn-nav btn-editor" onclick="onRenderEditor(this)">Editor</button></li>
                 <li><button class="btn-nav" onclick="hideAllSections()">Memes</button></li>
-                <!-- <li><button class="btn-nav" onclick="hideAllSections()">About</button></li> -->
             </ul>
         </nav>
     </header>
 
-    <!-- <main class="main-content flex space-between align-center"> -->
     <main class="main-content">
+
         <section class="gallery grid hidden"></section>
 
         <section class="editor grid hidden">
@@ -36,41 +34,38 @@
             <div class="control-box">
                 <input id="txt-input" class="txt-input full-grid" onkeyup="onSetLineTxt(this.value)" type="text"
                     placeholder="type here">
-                <button class="btn-control btn-add-line fa-solid plus" onclick="onAddLine()"></button>
-                <button class="btn-control btn-remove-line fa-solid trash" onclick="onRemoveLine()"></button>
-                <button class="btn-control btn-move-up fa-solid up" onclick="onMoveLine({y:-5})"></button>
-                <button class="btn-control btn-move-down fa-solid down" onclick="onMoveLine({y:5})"></button>
-                <button class="btn-control btn-switch-line fa-solid switch" onclick="onSwitchLine()"></button>
+                <button class="btn-control btn-add-line fa-solid fa-plus" onclick="onAddLine()"></button>
+                <button class="btn-control btn-remove-line fa-solid fa-trash-can" onclick="onRemoveLine()"></button>
+                <button class="btn-control btn-move-up fa-solid fa-angle-up" onclick="onMoveLine({y:-5})"></button>
+                <button class="btn-control btn-move-down fa-solid fa-angle-down" onclick="onMoveLine({y:5})"></button>
+                <button class="btn-control btn-switch-line fa-solid fa-repeat" onclick="onSwitchLine()"></button>
 
                 <div class="style-line-container full-grid">
                     <button class="btn-increase-font" onclick="onChangeFontSize(5)">A+</button>
                     <button class="btn-decrease-font" onclick="onChangeFontSize(-5)">A-</button>
-                    <button class="btn-aling-font fa-solid aling-left" onclick="onAlingLine('left')"></button>
-                    <button class="btn-aling-font fa-solid aling-center" onclick="onAlingLine('center')"></button>
-                    <button class="btn-aling-font fa-solid aling-right" onclick="onAlingLine('right')"></button>
+                    <button class="btn-aling-font fa-solid fa-align-left" onclick="onAlingLine('left')"></button>
+                    <button class="btn-aling-font fa-solid fa-align-center" onclick="onAlingLine('center')"></button>
+                    <button class="btn-aling-font fa-solid fa-align-right" onclick="onAlingLine('right')"></button>
                     <select class="font-select" name="font" id="font" onchange="onSetFont(this.value)">
                         <option value="arial">Arial</option>
                         <option value="lato">Lato</option>
                         <option value="eurofurence">Eurofurence</option>
                         <option value="anton">Anton</option>
                     </select>
-                    <input type="color" class="fill-color-input fa-solid fill" value="#FFFFFF" oninput="onSetLineColors()">
-                    <input type="color" class="stroke-color-input fa-solid stroke" value="#000000" oninput="onSetLineColors()">
+                    <input type="color" class="fill-color-input fa-solid fa-fill-drip fill" value="#FFFFFF" oninput="onSetLineColors()">
+                    <input type="color" class="stroke-color-input fa-solid fa-paintbrush stroke" value="#000000" oninput="onSetLineColors()">
                 </div>
 
                 <div class="sticker-container full-grid">
                     stickers go here
                 </div>
 
-                <button class="btn-share fa-brands facebook" onclick="onShareImg()"></button>
-                <button class="btn-save fa-solid disk" ></button>
-                <a href="#" class="btn-download fa-solid download" onclick="downloadImg(this)" download="my-img.jpg"></a>
+                <button class="btn-share fa-brands fa-facebook-f" onclick="onShareImg()"></button>
+                <button class="btn-save fa-solid fa-floppy-disk"></button>
+                <a href="#" class="btn-download fa-solid fa-download download" onclick="downloadImg(this)" download="my-img.jpg"></a>
             </div>
         </section>
     </main>
-
-    <!-- <footer class="main-footer flex space-between align-center">Footer</footer> -->
-
 
 
     <!-- script sources -->

@@ -4,15 +4,9 @@
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
 }
 
-
 .img-gallery {
     width: 100%;
     transition: 0.1s;
-    /* width: 200px;
-    margin: .5em;
-    padding: 0;
-    border: 0;
-    transition: 0.1s; */
 }
 
 .img-gallery:hover {

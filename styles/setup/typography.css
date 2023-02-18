@@ -17,87 +17,11 @@
 }
 
 /* Font Awesome */
-@font-face {
-    font-family: fa-brands;
-    src: url(/fonts/fa/fa-brands-400.ttf)
-}
-
-.fa-brands::before {
-    font-family: fa-brands;
-}
-
-.fa-brands.facebook::before {
-    content: '\f39e';
-}
-
-.fa-brands.instagram::before {
-    content: '\f16d';
-}
-
-@font-face {
-    font-family: fa-regular;
-    src: url(/fonts/fa/fa-regular-400.ttf)
-}
-
-.fa-regular::before {
-    font-family: fa-regular;
-}
-
-.fa-regular.download::before {
-    content: '\f019';
-}
-
-@font-face {
-    font-family: fa-solid;
-    src: url(/fonts/fa/fa-solid-900.ttf)
-}
-
-.fa-solid::before {
-    font-family: fa-solid;
-}
-
 .fa-solid.download::before {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    content: '\f019';
-}
-
-.fa-solid.disk::before {
-    content: '\f0c7';
-}
-
-.fa-solid.aling-right::before {
-    content: '\f038';
-}
-
-.fa-solid.aling-left::before {
-    content: '\f036';
-}
-
-.fa-solid.aling-center::before {
-    content: '\f037';
-}
-
-.fa-solid.plus::before {
-    content: '\2b';
-}
-
-.fa-solid.trash::before {
-    content: '\f2ed';
-}
-
-.fa-solid.up::before {
-    content: '\f106';
-}
-
-.fa-solid.down::before {
-    content: '\f107';
-}
-
-.fa-solid.switch::before {
-    content: '\f363';
 }
 
 .fa-solid.fill::before {
@@ -105,7 +29,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    content: '\f576';
 }
 
 .fa-solid.stroke::before {
@@ -113,6 +36,5 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    content: '\f1fc';
     color: var(--clr-1);
 }

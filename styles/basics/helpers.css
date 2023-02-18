@@ -1,5 +1,4 @@
 /* flex helpers */
-
 .flex {
     display: flex;
 }
@@ -20,13 +19,13 @@
 .full-grid{
     grid-column: 1 / -1;
 }
+
 /* display helpers */
 .block {
     display: block;
 }
 
 /* list helpers */
-
 .clean-list {
     margin: 0;
     padding: 0;
@@ -36,7 +35,6 @@
 .hidden {
     display: none;
 }
-
 
 .not-working{
     background-color: red;

@@ -1,35 +1,24 @@
-
 * {
     box-sizing: border-box;
 }
 
 .editor {
-    /* display: grid; */
     grid-template-columns: 6fr 4fr;
-
     height: 720px;
     width: 1200px;
-
     gap: 10px;
-    /* background-color: var(--clr-1); */
-    /* border: 5px solid var(--clr2); */
-
-    margin: auto 0 auto;
+    margin-inline: auto;
 }
 
 .editor > * {
-    /* border: 3px solid var(--clr2); */
     box-shadow: -5px 4px 5px 0px;
     height: 720px;
-    /* margin: 10px; */
 }
+
 .editor > *:first-child {
     max-width: 60vw;
 }
+
 .editor > *:nth-child(2) {
     max-width: 40vw;
 }
-
-/* .canvas-container{
-    max-height: 600px;
-} */
