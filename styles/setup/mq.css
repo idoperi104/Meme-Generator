@@ -112,10 +112,13 @@
         width: 300px;
         height: 500px;
     }
+    .sticker-container > * {
+        font-size: 2em;
+    }
 }
 
 
-@media (min-width: 1020px) {
+/* @media (min-width: 1020px) {
     .editor {
         grid-template-columns: 600px 400px;
         width: 1000px;
@@ -132,4 +135,4 @@
         height: 600px;
         width: 400px;
     }
-}
+} */

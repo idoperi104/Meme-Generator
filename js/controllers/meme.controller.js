@@ -5,6 +5,7 @@ let gCtx
 let gStartPos
 let gIsMouseClickDown = false
 let gIsSowRect = true
+let gIsDrag = false
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
@@ -43,7 +44,7 @@ function renderMeme() {
 
         // gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
         renderLines()
-        renderRect()
+        // renderRect()
     },
         false
     )
@@ -55,6 +56,7 @@ function renderLines() {
     var meme = getMeme()
     var lines = meme.lines
     lines.forEach((line, idx) => {
+        renderRect()
         drawText(idx, line)
     });
 }
@@ -69,14 +71,14 @@ function drawText(idx, line) {
     gCtx.font = `${size}px ${font}`
     gCtx.textBaseline = 'top'
 
-    gCtx.fillText(txt, x, y) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(txt, x, y) // Draws (strokes) a given text at the given (x, y) position.
+    gCtx.fillText(txt, x, y)
+    gCtx.strokeText(txt, x, y)
 
 }
 
-function renderRect() {
+function renderRect(isVisible = true) {
     const line = getCurrLine()
-    var { txt, size, font, x, y, align, fillColor, strokeColor } = line
+    var { txt, size, font, x, y, align, fillColor, strokeColor , rect} = line
     gCtx.beginPath()
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
@@ -89,11 +91,18 @@ function renderRect() {
 
     gCtx.beginPath()
     gCtx.strokeStyle = '#000000'
-    if (gIsSowRect) gCtx.strokeRect(x, y, textWidth + 10, textHeight)
-
+    gCtx.fillStyle = '#eeeeee3e'
+    if (gIsSowRect && isVisible){
+        gCtx.strokeRect(x - 5, y - 5, textWidth + 10, textHeight)
+        gCtx.fillRect(x - 5, y - 5, textWidth + 10, textHeight)
+    } 
+        
 
     //update rect model
-    createRect(x, y, textWidth + 10, textHeight, gIsMouseClickDown)
+    createRect(x - 5, y - 5, textWidth + 10, textHeight, gIsMouseClickDown)
+
+    rect = { x: x - 5, y: y - 5, textWidth: textWidth + 10, textHeight, gIsMouseClickDown }
+    line.rect = rect
 }
 
 // INIT CANVAS
@@ -122,10 +131,11 @@ function onSetLineTxt(txt) {
 
 // FUNCTIONALITY
 
-function onAddLine() {
+function onAddLine(txt = '') {
     var numOfLines = getMeme().lines.length
-    createLine('', 0, numOfLines * 50)
-    setSelectedLineIdx(1)
+    const y = numOfLines < 10 ? numOfLines : 5
+    createLine(txt, 0, y * 50)
+    setSelectedLineIdxToEnd()
     onSetLineColors()
     clearElInput()
 }
@@ -266,19 +276,25 @@ function getEvPos(ev) {
 function onDown(ev) {
     // console.log('Down')
     // Get the ev pos from mouse or touch
-    const pos = getEvPos(ev)
-    if (!isRectClicked(pos)) return
+    var pos = getEvPos(ev)
+    const lines = getMeme().lines
 
+    var clickedLineIdx = lines.findIndex(line => {
+        var pos = getEvPos(ev)
+        return isLineClicked(line, pos)
+    })
+    if (clickedLineIdx < 0) return
 
-    setRectDrag(true)
+    setSelectedLineIdxToIdx(clickedLineIdx)
+    renderMeme()
+    gIsDrag = true
     // //Save the pos we start from
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
 }
 
 function onMove(ev) {
-    const { isDrag } = getRect()
-    if (!isDrag) return
+    if (!gIsDrag) return
 
     gIsMouseClickDown = true
 
@@ -297,7 +313,7 @@ function onMove(ev) {
 function onUp() {
     // console.log('Up')
     gIsMouseClickDown = false
-    setRectDrag(false)
+    gIsDrag = false
     document.body.style.cursor = 'default'
 }
 

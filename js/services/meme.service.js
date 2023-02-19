@@ -35,6 +35,17 @@ function setSelectedLineIdx(num) {
     saveMemeToStorage(gMeme)
 }
 
+function setSelectedLineIdxToEnd(){
+    gMeme.selectedLineIdx = gMeme.lines.length-1
+    saveMemeToStorage(gMeme)
+}
+
+function setSelectedLineIdxToIdx(idx) {
+    gMeme.selectedLineIdx = idx
+    console.log(gMeme);
+    saveMemeToStorage(gMeme)
+}
+
 function createLine(txt = '', x = 40, y = 40, fillColor = '#FFFFFF', strokeColor = '#000000', size = 40, font = 'arial', align = 'center') {
     const line = {
         txt,
@@ -44,7 +55,7 @@ function createLine(txt = '', x = 40, y = 40, fillColor = '#FFFFFF', strokeColor
         x,
         y,
         strokeColor,
-        fillColor
+        fillColor,
     }
     gMeme.lines.push(line)
     saveMemeToStorage(gMeme)
@@ -99,6 +110,11 @@ function removeLine() {
 function setFont(font){
     getCurrLine().font = font
     saveMemeToStorage(gMeme)
+}
+
+function isLineClicked(line, pos){
+    const rect = line.rect
+    return pos.x > rect.x && pos.x < rect.x + rect.textWidth && pos.y > rect.y && pos.y < rect.y + rect.textHeight
 }
 
 // IMG

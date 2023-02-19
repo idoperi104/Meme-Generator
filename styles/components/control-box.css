@@ -59,6 +59,11 @@
 .fill-color-input{
     position: relative;
 }
+
 .stroke-color-input{
     position: relative;
 }
+
+/* .sticker-container > * {
+    font-size: 2em;
+} */
