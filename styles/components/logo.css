@@ -1,6 +1,6 @@
 .logo {
     color: var(--clr2);
-    font-family: anton, monospace;
+    font-family: anton, Impact;
     /* font-size: 2.5rem; */
     text-transform: lowercase;
     /* margin-inline-start: 1rem; */
@@ -12,4 +12,5 @@
 .logo::after{
     content: '.';
     color: var(--clr1);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
