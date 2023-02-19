@@ -16,9 +16,9 @@
 }
 
 .editor > *:first-child {
-    max-width: 60vw;
+    /* max-width: 60vw; */
 }
 
 .editor > *:nth-child(2) {
-    max-width: 40vw;
+    /* max-width: 40vw; */
 }

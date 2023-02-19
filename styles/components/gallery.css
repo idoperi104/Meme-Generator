@@ -1,7 +1,7 @@
 .gallery {
-    width: 100%;
     gap: .5rem;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    margin: 10px;
 }
 
 .img-gallery {

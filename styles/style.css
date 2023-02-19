@@ -10,6 +10,7 @@
 
 /* COMPONENTS */
 @import 'components/header.css';
+@import 'components/main-content.css';
 @import 'components/logo.css';
 @import 'components/editor.css';
 @import 'components/control-box.css';
