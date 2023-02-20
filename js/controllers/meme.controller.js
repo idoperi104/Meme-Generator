@@ -94,7 +94,7 @@ function renderRect(isVisible = true) {
     gCtx.fillStyle = '#eeeeee3e'
     if (gIsSowRect && isVisible){
         gCtx.strokeRect(x - 5, y - 5, textWidth + 10, textHeight)
-        gCtx.fillRect(x - 5, y - 5, textWidth + 10, textHeight)
+        // gCtx.fillRect(x - 5, y - 5, textWidth + 10, textHeight)
     } 
         
 
