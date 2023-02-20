@@ -213,6 +213,7 @@ function downloadImg(elLink) {
     setTimeout(() => {
         const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
         elLink.href = imgContent
+        gIsSowRect = true
     }, 1000);
 
 }
